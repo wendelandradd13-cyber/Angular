@@ -1,0 +1,60 @@
+/* O container vai ocupar a tela inteira e alinhar tudo no centro */
+.container-central {
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center;     /* Centraliza na vertical */
+    min-height: 100vh;       /* Faz o container ter no mínimo a altura da tela toda */
+    background-color: white;
+    flex-direction: row; /* Opcional: só para dar um fundo cinza claro */
+}
+
+.titulo {
+    text-align: center;
+    color:#00A36C
+}
+
+/* O formulário define a largura máxima para não esticar demais */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;        /* Define o tamanho máximo do formulário */
+    padding: 20px;           /* Espaçamento interno */
+    background: white;       /* Fundo branco para o formulário */
+    border-radius: 8px;      /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve elegante */
+}
+
+.formulario button {
+  display: block;
+  margin: 0 auto;
+}
+
+input::placeholder {
+    color: #a0aec0;      /* Muda a cor do texto */
+    font-style: italic;  /* Deixa o texto em itálico */
+    opacity: 0.8;        /* Controla a transparência */
+}
+.imagem img{
+    width: 600px;
+    
+}
+
+.imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+.formulario img{
+    width: 200px;
+    margin-left: 70px;
+}
+
+#senha {
+    padding-left: 35px;
+}
+
+.form-control {
+    padding-left: 40px;
+}
