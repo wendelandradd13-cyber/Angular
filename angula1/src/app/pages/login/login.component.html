@@ -4,13 +4,14 @@
       <img src="/img/ranger.png" alt="Ford Ranger">
     </div>
 
-    <form class="formulario">
+    <form class="formulario" (ngSubmit)="aoEnviarFormulario()">
       <img src="/img/ford.png" alt="Ford">
 
       <h1 class="titulo">Boas-vindas</h1>
 
       <div class="mb-3 position-relative">
-        <input type="text" class="form-control" id="email" name="email" placeholder="Insira seu usuario">
+        <input type="text" class="form-control" id="email" name="nome" [(ngModel)]="dadosLogin.nome"
+          placeholder="Insira seu usuario" required>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-person position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); z-index: 10;"
@@ -21,7 +22,8 @@
       </div>
 
       <div class="mb-3 position-relative">
-        <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" required>
+        <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="dadosLogin.senha"
+          placeholder="Insira sua senha" required>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%);"

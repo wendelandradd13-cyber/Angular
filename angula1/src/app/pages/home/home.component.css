@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* Reset básico para garantir que o fundo ocupe a tela toda sem barras de rolagem bobas */
+body {
+    margin: 0;
+    background-color: #f4f7f6; /* Um cinza bem claro no fundo destaca o card branco */
+}
+
+.uno {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    min-height: 100vh;       
+}
+
+.texto {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    flex-direction: column; 
+    background-color: white;
+    
+    /* Substituído altura fixa por padding para um respiro mais natural */
+    padding: 60px 40px; 
+    width: 100%;
+    max-width: 500px; /* Reduzi um pouco a largura máxima para o card ficar mais elegante */
+    
+    border-radius: 20px; /* 20px costuma ser o "sweet spot" para cards modernos */
+    
+    /* Uma sombra muito mais suave, realista e menos acinzentada/pesada */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+}
+
+.texto h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #2d3748; /* Um tom de grafite escuro em vez de preto puro traz sofisticação */
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Estilização do Botão */
+.btn {
+    margin-top: 35px;
+    font-family: "Nunito", sans-serif; /* Usando a outra fonte excelente que você importou */
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #0066ff; /* Um azul ligeiramente mais vivo */
+    border: none;
+    padding: 12px 30px; /* Botão mais robusto e fácil de clicar */
+    border-radius: 10px; /* Cantos arredondados que conversam com o card */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* Transição suave para o efeito de hover */
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2); /* Sombra leve azul no próprio botão */
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.btn:hover {
+    background-color: #0052cc; /* Escurece o azul de leve */
+    transform: translateY(-2px); /* Dá uma leve "subidinha" simulando interatividade */
+    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+}
+
+/* Efeito ao clicar */
+.btn:active {
+    transform: translateY(0);
+}
