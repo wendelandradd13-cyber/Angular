@@ -6,11 +6,26 @@ body {
     background-color: #f4f7f6; /* Um cinza bem claro no fundo destaca o card branco */
 }
 
+.cabeçario {
+    background-color: #0052cc;
+    width: 100%;
+    padding: 20px; /* Dá uma altura para o header respirar, mesmo se estiver vazio */
+    box-sizing: border-box;
+}
+
 .uno {
     display: flex;
-    justify-content: center; 
-    align-items: center;     
-    min-height: 100vh;       
+    flex-direction: column; /* Alinha o Header no topo e o conteúdo abaixo */
+    min-height: 100vh;      
+    background-color: #f4f7f6; /* Fundo cinza claro transferido para cá */
+}
+
+.conteudo-principal {
+    display: flex;
+    flex-grow: 1; /* Ocupa todo o resto da tela disponível */
+    justify-content: center; /* Centraliza o card na horizontal */
+    align-items: center;     /* Centraliza o card na vertical */
+    width: 100%;
 }
 
 .texto {
@@ -65,4 +80,35 @@ body {
 /* Efeito ao clicar */
 .btn:active {
     transform: translateY(0);
+}
+
+/* =======================================
+   REGRAS PARA CELULARES (Telas até 576px)
+   ======================================= */
+@media (max-width: 576px) {
+    
+    /* 1. Dá um respiro nas laterais para o card não colar nas bordas do celular */
+    .conteudo-principal {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* 2. Diminui o padding interno do card para sobrar mais espaço para o texto */
+    .texto {
+        padding: 40px 20px; 
+        border-radius: 16px; /* Cantos um pouco menores combinam mais com telas pequenas */
+    }
+
+    /* 3. Reduz o tamanho da fonte do título para não quebrar em muitas linhas */
+    .texto h1 {
+        font-size: 1.6rem;
+        text-align: center; /* Garante que o título fique centralizado no celular */
+    }
+
+    /* 4. Faz o botão ocupar quase a largura toda do card, facilitando o toque com o polegar */
+    .btn {
+        width: 100%;
+        margin-top: 25px;
+        padding: 14px 20px; /* Um pouco mais alto para facilitar o clique no touch */
+    }
 }
