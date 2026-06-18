@@ -13,6 +13,44 @@ body {
     box-sizing: border-box;
 }
 
+.btn-menu {
+    color: white;
+    background: none;
+    border: none;
+    /* Aumenta o tamanho do ícone ≡ */
+    font-size: 2.5rem; 
+    /* Remove espaçamentos internos padrão para o botão não ficar gigante */
+    padding: 0;
+    /* Garante que o cursor mude para a mãozinha ao passar o mouse */
+    cursor: pointer
+}
+
+/* Container que segura os botões - altera o espaçamento e alinhamento */
+.menu-links {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;             /* Controla o espaço vertical entre os botões */
+    padding: 10px;         /* Margem interna no menu */
+}
+
+/* Estilo individual de cada link/botão */
+.btn-local {
+    background: none;      /* Remove o fundo cinza quadrado */
+    border: none;          /* Remove as bordas pretas */
+    padding: 0;            /* Remove o espaçamento interno padrão do botão */
+    text-align: left;      /* Alinha o texto à esquerda */
+    font-family: "Nunito", sans-serif;
+    font-size: 1.1rem;
+    color: #2d3748;        /* Mesma cor grafite estilosa que usou no card */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+/* Efeito opcional para quando passar o mouse por cima */
+.btn-local:hover {
+    color: #0066ff;        /* Muda de cor suavemente ao passar o mouse */
+}
+
 .uno {
     display: flex;
     flex-direction: column; /* Alinha o Header no topo e o conteúdo abaixo */
