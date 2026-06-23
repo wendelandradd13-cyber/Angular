@@ -1,11 +1,11 @@
 <div class="meio">
     <div class="cabeçario">
-
         <button class="btn-menu btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample">
             ≡
         </button>
     </div>
+
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
@@ -20,47 +20,52 @@
     </div>
 
     <section class="d-flex gap-3 justify-content-around">
-        <div class="shadow border border-black p-3">
-            <h2>Veículos</h2>
-            <select>
-                <option value="">Ranger</option>
-                <option value="">Mustang</option>
-                <option value="">Territory</option>
-                <option value="">Bronco Sport</option>
-            </select>
+        <div class="card-seletor">
+            <h2>Veículo</h2>
+            <div class="seletor-corpo">
+                <select (change)="aoMudarVeiculo($event)" class="form-select">
+                    @for (item of listaVeiculos; track item.id) {
+                    <option [value]="item.vehicle">{{ item.vehicle }}</option>
+                    }
+                </select>
+            </div>
         </div>
 
-        <app-card />
-        <app-card />
-        <app-card />
+        <app-card titulo="Volume Total" [valor]="veiculoSelecionado?.volumetotal"></app-card>
+        <app-card titulo="Conectados" [valor]="veiculoSelecionado?.connected"></app-card>
+        <app-card titulo="Atualizações" [valor]="veiculoSelecionado?.softwareUpdates"></app-card>
     </section>
 
     <section>
-        <img src="http://localhost:3001/img/ranger.png" alt="">
+        @if (veiculoSelecionado) {
+        <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle">
+        }
     </section>
 
     <section>
-        <table class="mt-2 table text-center align-middle">
+        <table class="mt-2 table table-hover text-center align-middle">
             <thead>
                 <tr>
-                    <td class="p-3">VIN</td>
-                    <td class="p-3">ODOMETRO</td>
-                    <td class="p-3">NIVEL DO COMBUSTÍVEL</td>
-                    <td class="p-3">STATUS</td>
-                    <td class="p-3">LAT</td>
-                    <td class="p-3">LONG</td>
+                    <th class="p-3">VIN</th>
+                    <th class="p-3">ODÔMETRO</th>
+                    <th class="p-3">NÍVEL DO COMBUSTÍVEL</th>
+                    <th class="p-3">STATUS</th>
+                    <th class="p-3">LAT</th>
+                    <th class="p-3">LONG</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" class="form-control form-control-sm" placeholder="Filtrar VIN...">
+                        <input type="text" class="form-control form-control-sm" [value]="dadosTabela?.vinCodigo || ''"
+                            (input)="aoDigitarVin($event)" placeholder="Filtrar VIN...">
                     </td>
-                    <td>80000km</td>
-                    <td>90%</td>
-                    <td>ON</td>
-                    <td>-32.2831</td>
-                    <td>14.1625</td>
+
+                    <td>{{ dadosTabela?.odometro ?? '---' }} Km</td>
+                    <td>{{ dadosTabela?.nivelCombustivel ?? '---' }} %</td>
+                    <td>{{ dadosTabela?.status ?? '---' }}</td>
+                    <td>{{ dadosTabela?.lat ?? '---' }}</td>
+                    <td>{{ dadosTabela?.long ?? '---' }}</td>
                 </tr>
             </tbody>
         </table>

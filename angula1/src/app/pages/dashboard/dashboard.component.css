@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-/* Reset básico para garantir que o fundo ocupe a tela toda sem barras de rolagem bobas */
+/* Reset básico para garantir que o fundo ocupe a tela toda */
 body {
     margin: 0;
-    background-color: #f4f7f6; /* Um cinza bem claro no fundo destaca o card branco */
+    background-color: #f4f7f6; 
 }
 
 .cabeçario {
     background-color: #0052cc;
     width: 100%;
-    padding: 20px; /* Dá uma altura para o header respirar, mesmo se estiver vazio */
+    padding: 15px 20px; 
     box-sizing: border-box;
 }
 
@@ -17,69 +17,205 @@ body {
     color: white;
     background: none;
     border: none;
-    /* Aumenta o tamanho do ícone ≡ */
     font-size: 2.5rem; 
-    /* Remove espaçamentos internos padrão para o botão não ficar gigante */
     padding: 0;
-    /* Garante que o cursor mude para a mãozinha ao passar o mouse */
-    cursor: pointer
+    cursor: pointer;
+    line-height: 1; 
 }
 
-/* Container que segura os botões - altera o espaçamento e alinhamento */
+/* Container que segura os botões */
 .menu-links {
     display: flex;
     flex-direction: column; 
-    gap: 15px;             /* Controla o espaço vertical entre os botões */
-    padding: 10px;         /* Margem interna no menu */
+    gap: 15px;             
+    padding: 10px;         
 }
 
 /* Estilo individual de cada link/botão */
 .btn-local {
-    background: none;      /* Remove o fundo cinza quadrado */
-    border: none;          /* Remove as bordas pretas */
-    padding: 0;            /* Remove o espaçamento interno padrão do botão */
-    text-align: left;      /* Alinha o texto à esquerda */
+    background: none;      
+    border: none;          
+    padding: 5px 0;            
+    text-align: left;      
     font-family: "Nunito", sans-serif;
     font-size: 1.1rem;
-    color: #2d3748;        /* Mesma cor grafite estilosa que usou no card */
+    color: #2d3748;        
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
-/* Efeito opcional para quando passar o mouse por cima */
 .btn-local:hover {
-    color: #0066ff;        /* Muda de cor suavemente ao passar o mouse */
+    color: #0066ff;        
 }
 
-/* Container Principal - Centraliza tudo na vertical */
+/* Container Principal */
 .meio {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinha todos os blocos no centro horizontal */
+    align-items: center; 
     width: 100%;
-    gap: 30px; /* Cria um espaçamento uniforme entre as seções (cards, carro, tabela) */
+    gap: 30px; 
+    box-sizing: border-box;
 }
 
 /* Ajuste na seção de cima (Select + Cards) */
 .meio > section.d-flex {
     width: 100%;
-    max-width: 1200px; /* Limita a largura máxima para os cards não espalharem demais */
-    justify-content: center !important; /* Força o Bootstrap a centralizar os cards */
-    flex-wrap: wrap; /* Se a tela encolher, os cards quebram a linha em vez de amassar */
+    max-width: 1200px; 
+    justify-content: center !important; 
+    flex-wrap: wrap; 
+    padding: 0 15px; 
+    box-sizing: border-box;
+    gap: 20px; /* Mantém um espaçamento uniforme entre os blocos superiores */
+}
+
+/* ==========================================
+   NOVO: ESTILO PARA O SELETOR PARECER UM CARD
+   ========================================== 
+*/
+.card-seletor {
+    background-color: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 180px;
+    max-width: 240px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.card-seletor h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 600;
+}
+
+.seletor-corpo {
+    padding: 15px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Ajuste na Imagem do Carro */
 section img {
     display: block;
     max-width: 900px;
-    width: 100%; /* Garante que o carro diminua em telas menores */
+    width: 100%; 
     height: auto;
-}
-
-/* Ajuste na Tabela */
-section:has(table) {
-    width: 100%;
-    max-width: 1200px; /* Mantém a tabela alinhada com o limite dos cards */
     padding: 0 15px;
     box-sizing: border-box;
+}
+
+/* Ajuste na Seção da Tabela (Mobile) */
+section:has(table) {
+    width: 100%;
+    max-width: 1200px; 
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================
+    ALTERADO: TABELA COMBINANDO COM OS CARDS
+   ========================================== */
+
+/* Remove estilos padrão do Bootstrap que possam vazar e aplica a estrutura de card */
+.table {
+    width: 100% !important;
+    border-collapse: separate !important; /* Permite que os cantos arredondados funcionem nas bordas */
+    border-spacing: 0;
+    font-family: 'Nunito', sans-serif;
+    background-color: white;
+    min-width: 700px;
+    
+    /* Identidade visual idêntica aos seus cards */
+    border: 1px solid #dcdcdc !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow: hidden; /* Corta o fundo das células para respeitar o border-radius */
+}
+
+/* Cabeçalho usando o azul oficial do seu sistema (#0052cc) */
+.table thead tr {
+    background-color: #0052cc !important; 
+}
+
+/* Cabeçalho usando o azul oficial do seu sistema e forçando o texto a aparecer */
+.table thead tr th {
+    background-color: #0052cc !important; 
+    color: #ffffff !important; /* Força a cor do texto a ser branca */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 15px !important;
+    border: none !important;
+}
+
+/* Estilização das linhas de dados */
+.table td {
+    padding: 14px 15px !important;
+    font-size: 0.9rem;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7 !important;
+}
+
+/* Remove a borda da última linha para não ficar uma linha dupla no final do card */
+.table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Visual mais limpo para o input de filtro dentro da tabela */
+.table .form-control-sm {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    font-weight: 600;
+    color: #333;
+    background-color: #fcfcfc;
+    text-align: center;
+}
+
+.table .form-control-sm:focus {
+    border-color: #0052cc;
+    box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.1);
+    outline: none;
+}
+
+/* ==========================================
+   MEDIA QUERIES - REGRAS PARA CELULAR
+   ========================================== */
+@media (max-width: 576px) {
+    .meio {
+        gap: 20px; 
+    }
+
+    .meio > section.d-flex {
+        gap: 15px !important; 
+    }
+
+    /* Faz com que o seletor e os cards ocupem 100% da largura no mobile */
+    .meio > section.d-flex .card-seletor, 
+    .meio > section.d-flex app-card {
+        flex: 1 1 100%; 
+        max-width: 100%;
+    }
 }

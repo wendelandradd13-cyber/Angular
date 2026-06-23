@@ -24,14 +24,15 @@ export class LoginComponent {
     this.authService.login(this.dadosLogin).subscribe({
       next: (resposta) => {
         console.log('Login efetuado com sucesso!', resposta);
-        // Opcional: Salvar os dados do admin logado se precisar
-        // localStorage.setItem('usuario', JSON.stringify(resposta));
         
+        // 🔥 CORRIGIDO: Descomentamos e mudamos para 'usuarioLogado' para o Guard validar!
+        localStorage.setItem('usuarioLogado', JSON.stringify(resposta));
+        
+        // Manda o usuário para a Home após salvar na memória
         this.router.navigate(['/home']);
       },
       error: (erro) => {
         console.error('Erro ao conectar com a API:', erro);
-        // Exibe a mensagem exata que veio da sua API (ex: "O nome de usuário ou senha está incorreto...")
         alert(erro.error?.message || 'Falha ao entrar.');
       }
     });
