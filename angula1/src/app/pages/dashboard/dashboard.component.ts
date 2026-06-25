@@ -19,13 +19,7 @@ export class DashboardComponent implements OnInit {
   veiculoSelecionado: any = null;
   dadosTabela: any = null;
 
-  // Mapa para o select continuar funcionando ao trocar de veículo
-  vins: { [key: string]: string } = {
-    "Ranger": "2FRHDUYS2Y63NHD22454",
-    "Mustang": "2RFAASDY54E4HDU34874",
-    "Territory": "2FRHDUYS2Y63NHD22455",
-    "Bronco Sport": "2RFAASDY54E4HDU34875"
-  };
+  // 🔥 O MAPA FIXO FOI APAGADO! Agora tudo vem da API.
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:3001/vehicles').subscribe({
@@ -33,8 +27,12 @@ export class DashboardComponent implements OnInit {
         this.listaVeiculos = dados.vehicles;
 
         if (this.listaVeiculos.length > 0) {
+          // Seleciona o primeiro veículo da lista vinda da API
           this.veiculoSelecionado = this.listaVeiculos[0];
-          this.buscarDadosPorVin(this.vins[this.veiculoSelecionado.vehicle]);
+          
+          // 🔍 PEGANDO DA API: Busca os dados usando o VIN real que veio do banco!
+          // (Geralmente a propriedade se chama 'vin'. Se no seu banco for outro nome, mude aqui)
+          this.buscarDadosPorVin(this.veiculoSelecionado.vin);
         }
       },
       error: (erro) => console.error('Erro ao conectar com a API:', erro)
@@ -43,30 +41,32 @@ export class DashboardComponent implements OnInit {
 
   aoMudarVeiculo(evento: any): void {
     const nomeVeiculo = evento.target.value;
+    
+    // Procura na lista o veículo que tem o mesmo nome selecionado
     this.veiculoSelecionado = this.listaVeiculos.find(v => v.vehicle === nomeVeiculo);
-    this.buscarDadosPorVin(this.vins[nomeVeiculo]);
+    
+    if (this.veiculoSelecionado) {
+      // 🔍 PEGANDO DA API: Passa o VIN real do veículo encontrado na lista
+      this.buscarDadosPorVin(this.veiculoSelecionado.vin);
+    }
   }
 
   aoDigitarVin(evento: any): void {
     const vinDigitado = evento.target.value.toUpperCase().trim();
 
-    // SE O CAMPO ESTIVER VAZIO: Limpa tudo e força os tracinhos a aparecerem
     if (vinDigitado.length === 0) {
-      this.dadosTabela = null; // Deixar null faz o HTML ativar o ?? '---' na hora!
+      this.dadosTabela = null; 
       return;
     }
 
-    // Se você estiver apenas digitando (mas ainda não chegou em 20 letras)
     if (!this.dadosTabela) {
       this.dadosTabela = {};
     }
     this.dadosTabela.vinCodigo = vinDigitado;
 
-    // Se o VIN atingir exatamente 20 caracteres, faz a busca na API
     if (vinDigitado.length === 20) {
       this.buscarDadosPorVin(vinDigitado);
     } else {
-      // Se tiver texto mas não tiver 20 letras, limpa os números antigos e deixa os tracinhos
       this.dadosTabela.odometro = null;
       this.dadosTabela.nivelCombustivel = null;
       this.dadosTabela.status = null;
@@ -75,18 +75,16 @@ export class DashboardComponent implements OnInit {
     }
   }
   
-  // SUBSTITUA ESTE MÉTODO TAMBÉM (Melhorado para atualizar o input mesmo em caso de erro):
   buscarDadosPorVin(codigoVin: string): void {
     if (!codigoVin) return;
 
     this.http.post<any>('http://localhost:3001/vehicleData', { vin: codigoVin }).subscribe({
       next: (dados) => {
         this.dadosTabela = dados;
-        this.dadosTabela.vinCodigo = codigoVin; // Mantém o código no input
+        this.dadosTabela.vinCodigo = codigoVin; 
       },
       error: (erro) => {
         console.warn('VIN inválido ou não cadastrado na API.');
-        // Se errar o VIN, limpa os dados mantendo apenas o texto digitado
         this.dadosTabela = {
           vinCodigo: codigoVin,
           odometro: '---',

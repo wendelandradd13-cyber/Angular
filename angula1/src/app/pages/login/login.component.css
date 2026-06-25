@@ -4,13 +4,15 @@
     justify-content: center; /* Centraliza na horizontal */
     align-items: center;     /* Centraliza na vertical */
     min-height: 100vh;       /* Faz o container ter no mínimo a altura da tela toda */
-    background-color: white;
-    flex-direction: row; /* Opcional: só para dar um fundo cinza claro */
+    background-color: white; /* Um fundo cinza claro fica melhor para destacar o form */
+    flex-direction: column;  /* PADRÃO: Modo celular (um embaixo do outro) */
+    padding: 20px;
 }
 
 .titulo {
     text-align: center;
-    color: black
+    color: black;
+    margin-bottom: 20px;
 }
 
 /* O formulário define a largura máxima para não esticar demais */
@@ -19,36 +21,39 @@
     flex-direction: column;
     width: 100%;
     max-width: 400px;        /* Define o tamanho máximo do formulário */
-    padding: 20px;           /* Espaçamento interno */
-    background: white;       /* Fundo branco para o formulário */
-    border-radius: 8px;      /* Bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve elegante */
+    padding: 30px;           /* Aumentei um pouco o espaçamento interno */
+    background: white;       
+    border-radius: 8px;      
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Centraliza a logo do formulário de forma responsiva */
+.formulario img {
+    width: 150px;            /* Ajustado o tamanho para não quebrar */
+    margin: 0 auto 20px auto; /* Centraliza automaticamente horizontalmente */
 }
 
 .formulario button {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    width: 100%;             /* Botão ocupando 100% da largura fica bem melhor em telas menores */
+    margin-top: 10px;
 }
 
 input::placeholder {
-    color: #a0aec0;      /* Muda a cor do texto */
-    font-style: italic;  /* Deixa o texto em itálico */
-    opacity: 0.8;        /* Controla a transparência */
-}
-.imagem img{
-    width: 600px;
-    
+    color: #a0aec0;      
+    font-style: italic;  
+    opacity: 0.8;        
 }
 
-.imagem{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: aqua;
+/* Ajustes na imagem do Ranger */
+.imagem {
+    display: none;           /* PADRÃO: Esconde a imagem no celular para priorizar o login */
 }
-.formulario img{
-    width: 200px;
-    margin-left: 70px;
+
+.imagem img {
+    width: 100%;             /* Faz a imagem se adaptar ao container */
+    max-width: 550px;        /* Evita que ela cresça demais */
+    height: auto;
 }
 
 #senha {
@@ -57,4 +62,21 @@ input::placeholder {
 
 .form-control {
     padding-left: 40px;
+}
+
+/* ==========================================================================
+   MEDIA QUERY: Telas maiores (Computadores / Notebooks / Tablets grandes)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .container-central {
+        flex-direction: row; /* Coloca a imagem e o formulário LADO A LADO */
+        gap: 50px;           /* Cria um espaçamento elegante entre os dois */
+    }
+
+    .imagem {
+        display: flex;       /* Mostra a imagem apenas em telas grandes */
+        align-items: center;
+        justify-content: center;
+        background-color: transparent; /* Removi o aqua para o design ficar limpo, mas mude se quiser */
+    }
 }

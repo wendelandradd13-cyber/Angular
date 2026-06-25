@@ -3,7 +3,7 @@
 /* Reset básico para garantir que o fundo ocupe a tela toda sem barras de rolagem bobas */
 body {
     margin: 0;
-    background-color: #f4f7f6; /* Um cinza bem claro no fundo destaca o card branco */
+    background-color: white; /* Um cinza bem claro no fundo destaca o card branco */
 }
 
 .cabeçario {
@@ -53,17 +53,23 @@ body {
 
 .uno {
     display: flex;
-    flex-direction: column; /* Alinha o Header no topo e o conteúdo abaixo */
+    flex-direction: column; 
     min-height: 100vh;      
-    background-color: #f4f7f6; /* Fundo cinza claro transferido para cá */
+    background-color: white; 
 }
 
 .conteudo-principal {
     display: flex;
-    flex-grow: 1; /* Ocupa todo o resto da tela disponível */
-    justify-content: center; /* Centraliza o card na horizontal */
-    align-items: center;     /* Centraliza o card na vertical */
+    flex-grow: 1; /* Ocupa todo o resto da tela abaixo do azul */
+    justify-content: center; 
+    align-items: center;     
     width: 100%;
+
+    /* A IMAGEM ENTRA AQUI AGORA */
+    background-image: url('/img/ranger.png');
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 .texto {
@@ -125,8 +131,11 @@ body {
    ======================================= */
 @media (max-width: 576px) {
     
-    /* 1. Dá um respiro nas laterais para o card não colar nas bordas do celular */
     .conteudo-principal {
+        /* Mostra o carro inteiro na largura, sem cortar */
+        background-size: contain; 
+        background-position: bottom center; /* Alinha o carro na parte de baixo */
+        
         padding: 20px;
         box-sizing: border-box;
     }

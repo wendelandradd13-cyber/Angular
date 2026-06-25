@@ -25,7 +25,7 @@ export class LoginComponent {
       next: (resposta) => {
         console.log('Login efetuado com sucesso!', resposta);
         
-        // 🔥 CORRIGIDO: Descomentamos e mudamos para 'usuarioLogado' para o Guard validar!
+        // CORRIGIDO: Descomentamos e mudamos para 'usuarioLogado' para o Guard validar!
         localStorage.setItem('usuarioLogado', JSON.stringify(resposta));
         
         // Manda o usuário para a Home após salvar na memória

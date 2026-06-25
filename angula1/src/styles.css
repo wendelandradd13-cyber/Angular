@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* ==========================================
+   FIX DEFINTIVO PARA O SCROLL NO ANGULAR/BOOTSTRAP
+   ========================================== */
+
+/* Força o scroll vertical a ficar ativo, ignorando os bloqueios do offcanvas após a troca de rota */
+html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important; /* Libera a rolagem para baixo sempre */
+    overflow-x: hidden !important; /* Continua proibindo o scroll para o lado */
+}
+
+/* Garante que o container principal do Angular permita a rolagem */
+app-root {
+    display: block;
+    width: 100%;
+    height: auto !important;
+}
+
+/* Remove qualquer travamento que o Bootstrap jogue no body ou no html */
+.modal-open, 
+.offcanvas-open,
+body[style*="overflow: hidden"] {
+    overflow-y: auto !important;
+}

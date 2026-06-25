@@ -215,7 +215,7 @@ section:has(table) {
     /* Faz com que o seletor e os cards ocupem 100% da largura no mobile */
     .meio > section.d-flex .card-seletor, 
     .meio > section.d-flex app-card {
-        flex: 1 1 100%; 
+        flex: 100%; 
         max-width: 100%;
     }
 }

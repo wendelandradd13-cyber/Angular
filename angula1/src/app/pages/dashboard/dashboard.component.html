@@ -23,9 +23,9 @@
         <div class="card-seletor">
             <h2>Veículo</h2>
             <div class="seletor-corpo">
-                <select (change)="aoMudarVeiculo($event)" class="form-select">
-                    @for (item of listaVeiculos; track item.id) {
-                    <option [value]="item.vehicle">{{ item.vehicle }}</option>
+                <select (change)="aoMudarVeiculo($event)">
+                    @for (v of listaVeiculos; track v.id) {
+                    <option [value]="v.vehicle">{{ v.vehicle }}</option>
                     }
                 </select>
             </div>
