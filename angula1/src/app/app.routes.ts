@@ -32,4 +32,5 @@ export const routes: Routes = [
             .then(c => c.DashboardComponent)
         },
     },
+    
 ];
