@@ -3,7 +3,7 @@
 /* Reset básico para garantir que o fundo ocupe a tela toda sem barras de rolagem bobas */
 body {
     margin: 0;
-    background-color: white; /* Um cinza bem claro no fundo destaca o card branco */
+    background-color: white;
 }
 
 .cabeçario {
@@ -77,7 +77,7 @@ body {
     justify-content: center; 
     align-items: center;     
     flex-direction: column; 
-    background-color: white;
+    background-color: #ffffffc0;
     
     /* Substituído altura fixa por padding para um respiro mais natural */
     padding: 60px 40px; 
